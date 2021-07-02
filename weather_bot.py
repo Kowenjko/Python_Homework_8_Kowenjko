@@ -83,8 +83,12 @@ def weatherOneDay(message, id_day, class_send, url):
         if wather.find('div', class_='oWarnings'):
             denger = wather.find('div', class_='oWarnings').find_all(
                 'div', class_='description')
-            denger1 = denger[0].text
-            denger2 = denger[1].text
+            if len(denger) == 1:
+                denger1 = denger[0].text
+            else:
+                denger1 = denger[0].text
+                denger2 = denger[1].text
+
         bot.send_message(
             message, f'🕒{info} - {city}\n🌡️{min_temp}\n🌡️{max_temp}\n\
             Вітер:{direction[wint]} - {td[6].text} м/с\n\
